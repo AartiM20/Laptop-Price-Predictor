@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/css/style.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>Laptop Price Predictor</title>
+  </head>
+  <body class="bg-color">
+  <div class="container">
+    <div class="row">
+      <div class="card nt-50" style="width:100%; height:100%">
+        <div class="card-header" style="background-color: #a9d6e5;">
+          <div class="col-12" style="text-align: center">
+            <h1>Welcome to Laptop Predictor</h1>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <form method="post" accept-charset="utf-8">
+            <div class="form-row">
+
+            <div class = "col-md-6 form-group">
+              <label><b>Select Company</b></label>
+              <select class="selectpicker form-control" id="company" name="company" required="1">
+
+                {% for Company in company %}
+
+                <option value="{{Company}}">{{Company}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+            <div class = "col-md-6 form-group">
+              <label><b>Select Laptop Type</b></label>
+              <select class="selectpicker form-control" id="typeName" name="typeName" required="1">
+                {% for TypeName in typeName %}
+
+                <option value="{{TypeName}}">{{TypeName}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+              <br />
+              <br />
+              <br />
+              <br />
+            <div class = "col-md-6 form-group">
+              <label><b>Select Laptop Inches</b></label>
+              <select class="selectpicker form-control" id="inches" name="inches" required="1">
+                {% for Inches in inches %}
+
+                <option value="{{Inches}}">{{Inches}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+            <div class = "col-md-6 form-group">
+              <label><b>Select Laptop Speed</b></label>
+              <select class="selectpicker form-control" id="cpus" name="cpus" required="1">
+                {% for CpuS in cpus %}
+
+                <option value="{{CpuS}}">{{CpuS}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+              <br />
+              <br />
+              <br />
+              <br />
+            <div class = "col-md-6 form-group">
+              <label><b>Select Laptop Ram</b></label>
+              <select class="selectpicker form-control" id="ram" name="ram" required="1">
+                {% for Ram in ram %}
+
+                <option value="{{Ram}}">{{Ram}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+            <div class = "col-md-6 form-group">
+              <label><b>Select Memory Type</b></label>
+              <select class="selectpicker form-control" id="memory_type" name="memory_type" required="1">
+                {% for Memorytype in memory_type %}
+
+                <option value="{{Memorytype}}">{{Memorytype}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+              <br />
+              <br />
+              <br />
+              <br />
+            <div class = "col-md-6 form-group">
+              <label><b>Select Memory</b></label>
+              <select class="selectpicker form-control" id="memory" name="memory" required="1">
+                {% for Memory in memory %}
+
+                <option value="{{Memory}}">{{Memory}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+            <div class = "col-md-6 form-group">
+              <label><b>Select GPU</b></label>
+              <select class="selectpicker form-control" id="gpu" name="gpu" required="1">
+                {% for Gpu in gpu %}
+
+                <option value="{{Gpu}}">{{Gpu}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+              <br />
+              <br />
+              <br />
+              <br />
+            <div class = "col-md-6 form-group">
+              <label><b>Select Weight</b></label>
+              <select class="selectpicker form-control" id="weight" name="weight" required="1">
+                {% for Weight in weight %}
+
+                <option value="{{Weight}}">{{Weight}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+            <div class = "col-md-6 form-group">
+              <label><b>Select cpu</b></label>
+              <select class="selectpicker form-control" id="cpu" name="cpu" required="1">
+                {% for Cpu in cpu %}
+
+                <option value="{{Cpu}}">{{Cpu}}</option>
+
+                {% endfor %}
+              </select>
+            </div>
+
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+
+
+            <div class = "col-12 form-group" style="text-align: center, right: 50%">
+              <button class="btn form-control" onclick="send_data()" style="background-color: #014f86">Predict Price</button>
+            </div>
+
+            </div>
+          </form>
+
+          <br>
+
+          <div class="row">
+            <div class="col-lg-12" style="text-allign: center">
+              <h3><span id="prediction"></span></h3>
+            </div>
+          </div>
+
+
+
+        </br>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    function form_handler(event)
+    {
+      event.preventDefault();
+    }
+    function send_data()
+    {
+      document.querySelector('form').addEventListener('submit', form_handler);
+
+      var fd = new FormData(document.querySelector('form'));
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('POST', '/predict', true);
+      document.getElementById("prediction").innerHTML="Wait! Predicting You approximate Price...";
+
+      xhr.onreadystatechange= function()
+      {
+        if(xhr.readyState == XMLHttpRequest.DONE)
+        {
+          document.getElementById("prediction").innerHTML="The Price Of Your Laptop Based On your Specification is: €"+ xhr.responseText
+        }
+      }
+
+      xhr.onload = function(){};
+      xhr.send(fd);
+    }
+
+  </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+  </body>
+</html>
