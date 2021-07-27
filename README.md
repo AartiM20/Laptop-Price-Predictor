@@ -6,8 +6,10 @@ Laptop Price Prediction is a web application that will give you estimated price 
 
 ## Screenshot of App
 
-![Screenshot (63)](https://user-images.githubusercontent.com/75839560/127048890-0356160f-c083-4810-b6e3-02cf0efed782.png)
-![Screenshot (64)](https://user-images.githubusercontent.com/75839560/127048912-23bedb03-84c0-4bfc-9712-41847c14426b.png)
+![Screenshot (65)](https://user-images.githubusercontent.com/75839560/127092691-35b97595-5f26-468c-a645-75fa3a80f11d.png)
+
+![Screenshot (66)](https://user-images.githubusercontent.com/75839560/127092676-f3ee65ac-69c0-4668-9c4c-2554251da7ea.png)
+
 
 
 ## Overview
