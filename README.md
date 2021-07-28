@@ -19,13 +19,17 @@ This is a Flask web app which predicts the prices of the laptops.
 
 Google Collaboratory- Used for Data preprocessing phase i.e data cleaning and data visualization.
 
-Pycharm: Used for UI.
+VScode- Used for UI.
 
 ## Technologies Used
 
 FrontEnd: HTML, CSS, Bootstrap
 
 BackEnd Development: Flask.
+
+## Link Of This Project
+
+https://laptop-price-predictor-app.herokuapp.com/
 
 ## Link of the Dataset
 
