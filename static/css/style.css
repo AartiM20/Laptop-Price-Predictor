@@ -1,0 +1,19 @@
+.{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.bg-color{
+    background-color: #012a4a;
+}
+
+.nt-50{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.card-body{
+    background-color: #e2e1e6;
+}
+
+
