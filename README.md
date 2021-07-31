@@ -29,7 +29,7 @@ BackEnd Development: Flask.
 
 ## Link Of This Project
 
-https://laptop-price-predictor-app.herokuapp.com/
+https://price-predictor-laptop.herokuapp.com/
 
 ## Link of the Dataset
 
